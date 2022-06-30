@@ -7,7 +7,6 @@
  *
  * @format
  */
-import * as React from 'react';
 //import React from 'react';
 import {
   SafeAreaView,
@@ -21,9 +20,50 @@ import {
   Alert,
 } from 'react-native';
 
-
+import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './HomeScreen'
+import ProfileScreen from './ProfileScreen'
+import DatabaseScreen from './DatabaseScreen'
+
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component= {HomeScreen}
+          options={{ title: 'Home' }}
+        />
+        <Stack.Screen 
+          name="Profile" 
+          component= {ProfileScreen} 
+        />
+        <Stack.Screen 
+          name="Database" 
+          component= {DatabaseScreen} 
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
+
+// import { NavigationContainer } from '@react-navigation/native';
+
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// const App = () =>{
+//   return(
+//     <NavigationContainer>
+//     </NavigationContainer>
+//   )
+// }
+// export default App;
 
 // import {
 //   Colors,
@@ -106,77 +146,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //   );
 // };
 
-const Stack = createNativeStackNavigator();
-
-const MyStack = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: 'Welcome' }}
-        />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
-
-const HomeScreen = ({ navigation }) => {    
-  return(
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-      }}>
-      <Text>Press this button for a popup!</Text>
-      <Button
-      title="Press me"
-        onPress={() => Alert.alert('POPUP!')}
-        />
-      <Text>Press this button to go to the next page!</Text>
-      <Button
-      title="Press me"
-        onPress={() => 
-          navigation.navigate('Menu', {name: 'Test'})
-        }
-      />
-    </View>
-  );
-};
-
-const ProfileScreen = ({ navigation, route}) => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-    }}>
-      <Text>This is {route.params.name} !!!!</Text>
-    </View>
-  )
-}
-
-// const styles = StyleSheet.create({
-//   sectionContainer: {
-//     marginTop: 32,
-//     paddingHorizontal: 24,
-//   },
-//   sectionTitle: {
-//     fontSize: 24,
-//     fontWeight: '600',
-//   },
-//   sectionDescription: {
-//     marginTop: 8,
-//     fontSize: 18,
-//     fontWeight: '400',
-//   },
-//   highlight: {
-//     fontWeight: '700',
-//   },
-// });
-
-export default HomeScreen;
+// function HomeScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//       <Text>Home Screen</Text>
+//       <Button
+//         title="Go to Details"
+//         onPress={() => navigation.navigate('Details')}
+//       />
+//     </View>
+//   );
+// }
