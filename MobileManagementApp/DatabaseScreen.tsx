@@ -4,19 +4,24 @@ import {
     StatusBar,
     StyleSheet,
     Text,
-    useColorScheme,
     View,
     Button,
     Alert,
   } from 'react-native';
 
   import * as React from 'react';
+
+const message_1 = "Test Message"
+
+
   
 const DatabaseScreen = ({ navigation }) => {
     return (
-        <Text>
-            Text
+        <Text style={styles.textArea}>
+            {message_1}
         </Text>
+
+        
     );
   };
 
@@ -26,6 +31,10 @@ const DatabaseScreen = ({ navigation }) => {
             marginLeft: 100,
             width: 100,
             height: 100
+        },
+
+        textArea: {
+          color: "green"
         }
     }
   )
